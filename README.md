@@ -99,9 +99,9 @@ finally:
 ````
 
 ### OUPUT  
-## Experiment 1A
+# Experiment 1A
 
-# LED ON
+## LED ON
 
 ![led on](https://github.com/user-attachments/assets/6dec38d9-dc05-447a-8e94-ffb39b52dd55)
 
@@ -109,7 +109,7 @@ finally:
 
 <img width="1920" height="898" alt="Screenshot (58)" src="https://github.com/user-attachments/assets/9dced7a8-511e-400f-ab5f-8127f5345dfa" />
 
-# LED OFF
+## LED OFF
 
 ![led off](https://github.com/user-attachments/assets/5da9210c-d568-40a6-a25a-ae2d42ad109e)
 
@@ -119,13 +119,23 @@ finally:
 
 
 
-## Experiment 1B
+# Experiment 1B
 
-# FIGURE -05 ADD TITILE HERE 
+## OBSTACLE DETECTED 
+![led on ir](https://github.com/user-attachments/assets/8cc8d4ed-5a97-4b21-9941-dae2d5dbd307)
 
-#  FIGURE -06 ADD TITILE HERE 
+![Console 1](https://github.com/user-attachments/assets/b04b1cef-5da0-4642-a379-fd59d9aa2df9)
 
-# FIGURE -07 ADD TITLE HERE 
+
+
+## OBSTACLE NOT DETECTED 
+
+![led off ir](https://github.com/user-attachments/assets/39418ee0-842e-462e-aa73-8c9f09fcef24)
+
+![Console 0](https://github.com/user-attachments/assets/71289b92-c860-44ff-a6d5-5bfb125fab01)
+
+
+<img width="1891" height="823" alt="Screenshot 2026-02-05 143015" src="https://github.com/user-attachments/assets/799cef44-ae67-4db9-a844-bca2ed8b361c" />
 
  
 ## RESULTS
