@@ -1,8 +1,8 @@
 # EXPERIMENT-01-INTERFACTING-DIGITAL-OUTPUT-WITH-EDGE-DEVICE---(RASPBERRYPI-PI4)
-### NAME 
-### DEPARTMENT 
-### ROLL NO 
-### DATE OF EXPERIMENT 
+### NAME : DHARSHINI S
+### DEPARTMENT : CSE(IOT)
+### ROLL NO : 212223110010
+### DATE OF EXPERIMENT : 04-02-2026
 
 ### AIM
 To interface a digital output device (LED) with the Raspberry Pi 4 and control it using Python.
@@ -53,25 +53,73 @@ Connect the IR sensor OUT to any one GPIO.
 
 ## PROGRAM (Python)
 ```
+import RPi.GPIO as GPIO
+import time
+import urllib.request
 
+# ThingSpeak details
+WRITE_API_KEY = "IARCOVMCT5RNJ5W5"
+CHANNEL_ID = 3241534
+THINGSPEAK_URL = "https://api.thingspeak.com/update"
 
- 
+# Set GPIO numbering mode
+GPIO.setmode(GPIO.BCM)
 
+# Define LED pin
+LED_PIN = 18
 
+# Set GPIO18 as output
+GPIO.setup(LED_PIN, GPIO.OUT)
 
- 
+def send_to_thingspeak(value):
+    url = f"https://api.thingspeak.com/update?api_key=IARCOVMCT5RNJ5W5&field1={value}"
+    urllib.request.urlopen(url)
+    print("Sent to ThingSpeak:", value)
+
+try:
+    while True:
+        # LED ON
+        GPIO.output(LED_PIN, GPIO.HIGH)
+        print("LED ON")
+        send_to_thingspeak(1)
+        time.sleep(15)
+
+        # LED OFF
+        GPIO.output(LED_PIN, GPIO.LOW)
+        print("LED OFF")
+        send_to_thingspeak(0)
+        time.sleep(15)
+
+except KeyboardInterrupt:
+    print("Program stopped")
+
+finally:
+    GPIO.cleanup()
+
 ````
 
 ### OUPUT  
-Experiment 1A
+## Experiment 1A
 
-# FIGURE -02 ADD TITILE HERE 
+# LED ON
 
-#  FIGURE -03 ADD TITILE HERE 
+![led on](https://github.com/user-attachments/assets/6dec38d9-dc05-447a-8e94-ffb39b52dd55)
 
-# FIGURE -04 ADD TITLE HERE 
+![thingspeak 1](https://github.com/user-attachments/assets/c2380f0d-c0e2-489e-9534-3edaefc907fb)
 
-Experiment 1B
+<img width="1920" height="898" alt="Screenshot (58)" src="https://github.com/user-attachments/assets/9dced7a8-511e-400f-ab5f-8127f5345dfa" />
+
+# LED OFF
+
+![led off](https://github.com/user-attachments/assets/5da9210c-d568-40a6-a25a-ae2d42ad109e)
+
+![thingspeak 0](https://github.com/user-attachments/assets/35ff85cd-1ea5-4898-add2-9ca74376ca63)
+
+<img width="1920" height="884" alt="Screenshot (59)" src="https://github.com/user-attachments/assets/7370c313-a4aa-4e90-b903-5ac06d57f4e4" />
+
+
+
+## Experiment 1B
 
 # FIGURE -05 ADD TITILE HERE 
 
