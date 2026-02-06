@@ -52,6 +52,7 @@ Connect the IR sensor GND to any GND.
 Connect the IR sensor OUT to any one GPIO. 
 
 ## PROGRAM (Python)
+## Experiment 1A
 ```
 import RPi.GPIO as GPIO
 import time
@@ -98,6 +99,65 @@ finally:
 
 ````
 
+## Experiment 1B
+```
+import RPi.GPIO as GPIO
+import time
+import urllib.request
+
+# ThingSpeak details
+WRITE_API_KEY = "X839QZ0XT8UUS8KN"
+CHANNEL_ID = 3249834
+THINGSPEAK_URL = "https://api.thingspeak.com/update"
+
+
+
+# Pin setup
+SENSOR_PIN = 23   # Input from sensor
+LED_PIN = 18      # Output to LED
+
+# GPIO mode
+GPIO.setmode(GPIO.BCM)
+
+# Setup pins
+GPIO.setup(SENSOR_PIN, GPIO.IN)
+GPIO.setup(LED_PIN, GPIO.OUT)
+
+def send_to_thingspeak(value):
+    url = f"https://api.thingspeak.com/update?api_key=X839QZ0XT8UUS8KN&field1={value}"
+    urllib.request.urlopen(url)
+    print("Sent to ThingSpeak:", value)
+
+
+print("Sensor + LED system running...")
+
+try:
+    while True:
+        sensor_value = GPIO.input(SENSOR_PIN)
+
+        if sensor_value == 0:   # Many IR sensors give LOW when object detected
+            print("Object Detected! LED ON")
+            GPIO.output(LED_PIN, GPIO.HIGH)
+            send_to_thingspeak(1)
+
+            time.sleep(15)
+        else:
+            print("No Object. LED OFF")
+            GPIO.output(LED_PIN, GPIO.LOW)
+            send_to_thingspeak(0)
+
+            time.sleep(15)
+
+        time.sleep(0.1)
+
+except KeyboardInterrupt:
+    print("Stopped by user")
+
+finally:
+    GPIO.cleanup()
+
+```
+
 ### OUPUT  
 # Experiment 1A
 
@@ -125,6 +185,9 @@ finally:
 ![led on ir](https://github.com/user-attachments/assets/8cc8d4ed-5a97-4b21-9941-dae2d5dbd307)
 
 ![Console 1](https://github.com/user-attachments/assets/b04b1cef-5da0-4642-a379-fd59d9aa2df9)
+
+<img width="1891" height="823" alt="Screenshot 2026-02-05 143015" src="https://github.com/user-attachments/assets/34f707c6-963b-48ba-bb27-c1803b75f9b3" />
+
 
 
 
